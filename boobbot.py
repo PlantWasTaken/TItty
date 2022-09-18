@@ -1,19 +1,11 @@
-from ast import arg
 import discord
 from discord.ext import commands
 import time as t
 import random as rd
 import os
 
-token = "MTAyMDQxODA4Nzg2ODE4NjcyOA.GCAxCq.-aQZCrgAE5mm4THgDB0ggnyfesAIyPr3tN1k10"
-from ast import arg
-import discord
-from discord.ext import commands
-import time as t
-import random as rd
-import os
-
-token = "MTAyMDQxODA4Nzg2ODE4NjcyOA.GL6fwD._ASPQWNes8s_fbiFs9UgV_YHKrKmOzA6EcJgeg"
+token = "MTAyMDQxODA4Nzg2ODE4NjcyOA.Gqr0Tf."
+as = "DuoMGH_PllTphVUK4niIyWHyL0N7MDi-3NW3Xo"
 client = discord.Client(intents = discord.Intents.all())
 channel = 1020778135869997176
 bot = commands.Bot(command_prefix="!", intents = discord.Intents.all())
