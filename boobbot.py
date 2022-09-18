@@ -63,7 +63,6 @@ async def on_message(ctx, *args):
     for i in files:
         with open(i, "r") as f:
             lines = f.readlines()
-        print("lines", lines)
 
         with open(i, "w") as f:
             for line in lines:
