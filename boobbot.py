@@ -55,5 +55,17 @@ async def on_message(ctx, *args):
             
     #rnd collection of all images        
     wrt_file(lnk, "rnd.txt")
+    
+@bot.command(name = "del")
+async def on_message(ctx, *args):
+    for i in files:
+        with open(i, "r") as f:
+            lines = f.readlines()
+        print("lines", lines)
+
+        with open(i, "w") as f:
+            for line in lines:
+                if line.strip("\n") != "".join(args):
+                    f.write(line)
 
 bot.run(token)
