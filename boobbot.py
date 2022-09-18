@@ -10,6 +10,8 @@ client = discord.Client(intents = discord.Intents.all())
 channel = 1020778135869997176
 bot = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 
+files = ["ass.txt", "rnd.txt", "puss.txt", "boob.txt"]
+
 def wrt_file(lnk, name):
     f = open(name, "a")
     for i in lnk:
@@ -55,7 +57,7 @@ async def on_message(ctx, *args):
             
     #rnd collection of all images        
     wrt_file(lnk, "rnd.txt")
-    
+
 @bot.command(name = "del")
 async def on_message(ctx, *args):
     for i in files:
@@ -66,6 +68,8 @@ async def on_message(ctx, *args):
         with open(i, "w") as f:
             for line in lines:
                 if line.strip("\n") != "".join(args):
+                    await ctx.channel.send("Image deleted")
                     f.write(line)
+
 
 bot.run(token)
