@@ -60,15 +60,17 @@ async def on_message(ctx, *args):
 
 @bot.command(name = "del")
 async def on_message(ctx, *args):
-    for i in files:
-        with open(i, "r") as f:
-            lines = f.readlines()
+    if ctx.message.author.id == 358580959395971073 or ctx.message.author.id == 706939806134829067:
+        for i in files:
+            with open(i, "r") as f:
+                lines = f.readlines()
 
-        with open(i, "w") as f:
-            for line in lines:
-                if line.strip("\n") != "".join(args):
-                    await ctx.channel.send("Image deleted")
-                    f.write(line)
-
-
+            with open(i, "w") as f:
+                for line in lines:
+                    if line.strip("\n") != "".join(args):
+                        f.write(line)
+                        await ctx.channel.send("Image deleted")
+    else:
+        print(ctx.message.author.id)
+        await ctx.channel.send("You're not allowed ot use this command!")
 bot.run(token)
