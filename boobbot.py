@@ -5,12 +5,13 @@ import random as rd
 import os
 
 token = "MTAyMDQxODA4Nzg2ODE4NjcyOA.Gqr0Tf."
-as = "DuoMGH_PllTphVUK4niIyWHyL0N7MDi-3NW3Xo"
 client = discord.Client(intents = discord.Intents.all())
 channel = 1020778135869997176
 bot = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 
 files = ["ass.txt", "rnd.txt", "puss.txt", "boob.txt"]
+w_list = [358580959395971073, 706939806134829067]
+b_list = [590595318383378453]
 
 def wrt_file(lnk, name):
     f = open(name, "a")
@@ -28,20 +29,30 @@ def rnd_img(name):
 async def on_ready():
     print("Ready")
 
+@bot.command(name = "backup")
+async def on_message(ctx):
+    if(ctx.message.author.id in 358580959395971073):
+        f = open('rnd.txt', "r")
+        for i in f:
+            await ctx.channel.send(i)
+            t.sleep(1)
 
 @bot.command(name = "bb")
 async def on_message(ctx, args):
-    if(args.lower() == "b"):
-        await ctx.channel.send(rnd_img("boob.txt"))
+    if(ctx.message.author.id in b_list):
+        await ctx.channel.send("You're not permiitted ot use this command!")
+    else:
+        if(args.lower() == "b"):
+            await ctx.channel.send(rnd_img("boob.txt"))
 
-    elif(args.lower() == "a"):
-        await ctx.channel.send(rnd_img("ass.txt"))
+        elif(args.lower() == "a"):
+            await ctx.channel.send(rnd_img("ass.txt"))
 
-    elif(args.lower() == "p"):    
-        await ctx.channel.send(rnd_img("puss.txt"))
+        elif(args.lower() == "p"):    
+            await ctx.channel.send(rnd_img("puss.txt"))
 
-    elif(args.lower() == "rnd"):
-        await ctx.channel.send(rnd_img("rnd.txt"))
+        elif(args.lower() == "rnd"):
+            await ctx.channel.send(rnd_img("rnd.txt"))
 
 @bot.command(name = "link")
 async def on_message(ctx, *args):
@@ -60,7 +71,7 @@ async def on_message(ctx, *args):
 
 @bot.command(name = "del")
 async def on_message(ctx, args):
-    if ctx.message.author.id == 358580959395971073 or ctx.message.author.id == 706939806134829067:
+    if(ctx.message.author.id in w_list):
         for i in files:
             with open(i, "r") as f:
                 lines = f.readlines()
@@ -74,3 +85,4 @@ async def on_message(ctx, args):
         print(ctx.message.author.id)
         await ctx.channel.send("You're not allowed ot use this command!")
 bot.run(token)
+
